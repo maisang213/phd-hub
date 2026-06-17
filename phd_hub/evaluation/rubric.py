@@ -87,11 +87,21 @@ DIMENSIONS: tuple[Dimension, ...] = (
         name="Resourcing & Supervision",
         weight=10,
         source="ARC research environment",
-        question="Funding, supervisor expertise AND capacity, data/infrastructure access?",
+        question="Funding, supervisor expertise AND capacity, data/infrastructure access? "
+                 "Does the supervisory team's research agenda align with the candidate's "
+                 "intended framing — or will the lead supervisor's gravity pull the project "
+                 "in a different direction?",
         anchors={
-            5: "Funded; expert supervisor(s) with confirmed capacity; infrastructure in place.",
-            3: "Partial support; supervisor fit good but capacity or funding uncertain.",
-            1: "Unfunded and/or no available expert supervisor; infrastructure gaps.",
+            5: "Funded; expert supervisor(s) with confirmed capacity; infrastructure in place. "
+               "Lead supervisor's own research agenda aligns with the candidate's intended "
+               "framing — no directional-pull risk.",
+            3: "Partial support; supervisor domain fit good but capacity, funding, or "
+               "directional alignment uncertain. Lead supervisor may have adjacent rather than "
+               "identical research interests; topic framing could drift without active "
+               "management.",
+            1: "Unfunded and/or no available expert supervisor; infrastructure gaps. And/or "
+               "lead supervisor's agenda pulls strongly toward a framing incompatible with "
+               "the candidate's goals — high risk of topic capture.",
         },
     ),
     Dimension(

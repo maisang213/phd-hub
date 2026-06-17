@@ -54,7 +54,7 @@ a PhD-project choice. They are defaults — override them and state why.
 | 2 | **Originality & Novelty** | 20 | FINER-N, REF-Originality | Does it make a new contribution, or restate known results? |
 | 3 | **Rigour & Tractability** | 15 | REF-Rigour, Heilmeier "how will you measure success?" | Is there a sound method and a *falsifiable, measurable* success criterion? |
 | 4 | **Feasibility** | 15 | FINER-F, ARC-feasibility | Can it actually be done in the time, with the data, scope and skills available? |
-| 5 | **Resourcing & Supervision** | 10 | ARC research environment | Funding, supervisor expertise *and capacity*, data/infrastructure access. |
+| 5 | **Resourcing & Supervision** | 10 | ARC research environment | Funding, supervisor expertise *and capacity*, data/infrastructure access. **Does the lead supervisor's research agenda align with the candidate's intended framing?** A misaligned lead can pull the project's topic toward their own interests regardless of their domain competence. |
 | 6 | **Impact & Dissemination** | 10 | REF-Impact, Heilmeier "what's the payoff?" | Will it publish in good venues and/or change practice? What is the reach? |
 | 7 | **Candidate Fit** | 10 | (PhD-specific) | Does it match the candidate's skills, motivation and career trajectory? |
 | — | **Ethics & Integrity** | GATE | FINER-E | Is it ethical and approvable? A fail disqualifies regardless of score. |
@@ -84,6 +84,13 @@ the shape is:
 
 Every score **must carry a one-line rationale**. A number without a reason is not
 evidence; the rationale is what you defend in front of a panel.
+
+> **Note on Resourcing & Supervision:** "supervisor expertise" means both *domain*
+> competence (do they know the field?) and *directional* alignment (will they let the
+> project go where the candidate needs it to go?). A highly expert lead whose own
+> research agenda points elsewhere is a directional-pull risk — score accordingly, even
+> if their credentials are strong. The probe question that surfaces this fastest: *"Is
+> the sentiment/data source for this project fixed, or is the framing open?"*
 
 ---
 
