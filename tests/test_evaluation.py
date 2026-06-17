@@ -7,10 +7,14 @@ import pytest
 
 from phd_hub.evaluation.rubric import (
     DIMENSIONS,
+    WEIGHT_PROFILES,
     DimensionScore,
     GateResult,
     Scorecard,
+    WeightProfile,
     rank,
+    rank_by,
+    sensitivity,
 )
 from phd_hub.evaluation.loader import (
     load_scorecards,
@@ -77,6 +81,71 @@ class TestRank:
         weak_open = Scorecard("open", _full_scores(2))
         ranked = rank([strong_closed, weak_open])
         assert [c.project for c in ranked] == ["open", "closed"]
+
+
+class TestWeightProfiles:
+    def test_builtin_profiles_cover_all_dimensions(self):
+        keys = {d.key for d in DIMENSIONS}
+        for p in WEIGHT_PROFILES:
+            assert set(p.weights) == keys
+
+    def test_profile_rejects_missing_dimension(self):
+        with pytest.raises(ValueError, match="dimension mismatch"):
+            WeightProfile("bad", "Bad", "x", {"significance": 1})
+
+    def test_profile_rejects_zero_sum(self):
+        with pytest.raises(ValueError, match="sum to zero"):
+            WeightProfile("z", "Z", "x", {d.key: 0 for d in DIMENSIONS})
+
+    def test_overall_with_equal_weights_is_plain_average(self):
+        # Equal weights -> overall is just the mean score rescaled to 0–100.
+        equal = {d.key: 1.0 for d in DIMENSIONS}
+        values = [(i % 5) + 1 for i in range(len(DIMENSIONS))]  # 1..5 cycling, all in range
+        scores = [DimensionScore(d.key, v, "x") for d, v in zip(DIMENSIONS, values)]
+        card = Scorecard("P", scores)
+        expected = sum(values) / len(values) / 5 * 100
+        assert card.overall_with(equal) == pytest.approx(expected)
+
+    def test_default_overall_unchanged_by_refactor(self):
+        card = Scorecard("P", [DimensionScore(d.key, 3, "x") for d in DIMENSIONS])
+        assert card.overall == pytest.approx(60.0)
+        assert card.overall_with() == card.overall
+
+
+class TestRankBy:
+    def test_reweighting_can_change_order(self):
+        # A strong on the merit dims; B strong on the career dims (fit + impact).
+        merit = {"significance", "originality"}
+        career = {"candidate_fit", "impact"}
+        a = Scorecard("A", [DimensionScore(d.key, 5 if d.key in merit else 2, "x") for d in DIMENSIONS])
+        b = Scorecard("B", [DimensionScore(d.key, 5 if d.key in career else 2, "x") for d in DIMENSIONS])
+        merit_first = next(p for p in WEIGHT_PROFILES if p.key == "merit_first").weights
+        career_first = next(p for p in WEIGHT_PROFILES if p.key == "career_first").weights
+        assert rank_by([a, b], merit_first)[0].project == "A"
+        assert rank_by([a, b], career_first)[0].project == "B"
+
+
+class TestSensitivity:
+    def test_pead_robust_across_all_profiles(self):
+        cards = load_scorecards(EXAMPLE)
+        report = sensitivity(cards)
+        assert report.is_robust
+        assert all(w.startswith("PEAD") for w in report.winners.values())
+
+    def test_report_covers_every_project_and_profile(self):
+        cards = load_scorecards(EXAMPLE)
+        report = sensitivity(cards)
+        assert len(report.rows) == len(cards)
+        for row in report.rows:
+            assert set(row.by_profile) == {p.key for p in WEIGHT_PROFILES}
+
+    def test_fragile_when_winner_flips(self):
+        merit = {"significance", "originality"}
+        career = {"candidate_fit", "impact"}
+        a = Scorecard("A", [DimensionScore(d.key, 5 if d.key in merit else 1, "x") for d in DIMENSIONS])
+        b = Scorecard("B", [DimensionScore(d.key, 5 if d.key in career else 1, "x") for d in DIMENSIONS])
+        report = sensitivity([a, b])
+        assert not report.is_robust
 
 
 class TestLoader:

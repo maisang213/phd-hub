@@ -122,6 +122,83 @@ DIMENSIONS: tuple[Dimension, ...] = (
 
 DIMENSION_BY_KEY: dict[str, Dimension] = {d.key: d for d in DIMENSIONS}
 
+# The built-in weights, as a plain mapping. Absolute scale is irrelevant — scores
+# are normalised by the weight sum — so a profile only needs the *relative* emphasis.
+DEFAULT_WEIGHTS: dict[str, float] = {d.key: float(d.weight) for d in DIMENSIONS}
+
+
+@dataclass(frozen=True)
+class WeightProfile:
+    """A named set of dimension weights expressing a particular emphasis.
+
+    Used for sensitivity analysis: re-ranking the same scores under several
+    defensible weightings to see whether the conclusion is robust or fragile.
+    """
+
+    key: str
+    name: str
+    description: str
+    weights: dict[str, float]
+
+    def __post_init__(self) -> None:
+        missing = set(DEFAULT_WEIGHTS) - set(self.weights)
+        extra = set(self.weights) - set(DEFAULT_WEIGHTS)
+        if missing or extra:
+            raise ValueError(
+                f"Weight profile {self.key!r} dimension mismatch — "
+                f"missing {sorted(missing)}, unexpected {sorted(extra)}"
+            )
+        if any(w < 0 for w in self.weights.values()):
+            raise ValueError(f"Weight profile {self.key!r} has negative weights")
+        if sum(self.weights.values()) <= 0:
+            raise ValueError(f"Weight profile {self.key!r} weights sum to zero")
+
+
+# A small spread of defensible weightings. Each must keep all seven dimension keys.
+WEIGHT_PROFILES: tuple[WeightProfile, ...] = (
+    WeightProfile(
+        key="default",
+        name="Default (balanced)",
+        description="The framework's baseline — merit-led with feasibility close behind.",
+        weights=dict(DEFAULT_WEIGHTS),
+    ),
+    WeightProfile(
+        key="merit_first",
+        name="Merit-first (academic)",
+        description="Emphasise significance, originality and rigour — a pure-research lens.",
+        weights={
+            "significance": 25, "originality": 25, "rigour": 20,
+            "feasibility": 10, "resourcing": 5, "impact": 5, "candidate_fit": 10,
+        },
+    ),
+    WeightProfile(
+        key="career_first",
+        name="Career-first (QR path)",
+        description="Emphasise candidate fit and impact — a career-driven lens.",
+        weights={
+            "candidate_fit": 25, "impact": 20, "significance": 15, "originality": 15,
+            "rigour": 10, "feasibility": 10, "resourcing": 5,
+        },
+    ),
+    WeightProfile(
+        key="feasibility_first",
+        name="Feasibility-first (risk-averse)",
+        description="Emphasise feasibility and resourcing — 'will I actually finish?'",
+        weights={
+            "feasibility": 25, "resourcing": 20, "rigour": 15, "significance": 15,
+            "originality": 10, "impact": 10, "candidate_fit": 5,
+        },
+    ),
+    WeightProfile(
+        key="equal",
+        name="Equal weights",
+        description="Every dimension weighted the same — a neutral baseline.",
+        weights={d.key: 1.0 for d in DIMENSIONS},
+    ),
+)
+
+WEIGHT_PROFILE_BY_KEY: dict[str, WeightProfile] = {p.key: p for p in WEIGHT_PROFILES}
+
 
 @dataclass(frozen=True)
 class Gate:
@@ -206,17 +283,26 @@ class Scorecard:
                 f"{self.project!r} missing scores for: {sorted(missing)}"
             )
 
+    def weighted_score_with(self, weights: dict[str, float] | None = None) -> float:
+        """Weighted average on the native 1–5 scale under the given weights."""
+        w = weights or DEFAULT_WEIGHTS
+        total_w = sum(w[s.key] for s in self.scores)
+        weighted = sum(w[s.key] * s.score for s in self.scores)
+        return weighted / total_w
+
+    def overall_with(self, weights: dict[str, float] | None = None) -> float:
+        """Weighted score rescaled to 0–100 under the given weights."""
+        return self.weighted_score_with(weights) / MAX_SCORE * 100
+
     @property
     def weighted_score(self) -> float:
-        """Weighted average on the native 1–5 scale."""
-        total_w = sum(s.dimension.weight for s in self.scores)
-        weighted = sum(s.dimension.weight * s.score for s in self.scores)
-        return weighted / total_w
+        """Weighted average on the native 1–5 scale (default weights)."""
+        return self.weighted_score_with()
 
     @property
     def overall(self) -> float:
-        """Weighted score rescaled to 0–100 (percentage of the maximum)."""
-        return self.weighted_score / MAX_SCORE * 100
+        """Weighted score rescaled to 0–100 (default weights)."""
+        return self.overall_with()
 
     @property
     def failed_gates(self) -> list[GateResult]:
@@ -227,6 +313,69 @@ class Scorecard:
         return bool(self.failed_gates)
 
 
+def rank_by(
+    cards: list[Scorecard], weights: dict[str, float] | None = None
+) -> list[Scorecard]:
+    """Rank by (not disqualified, overall) descending under the given weights.
+
+    Gated (disqualified) projects always sink below qualified ones.
+    """
+    return sorted(
+        cards,
+        key=lambda c: (not c.disqualified, c.overall_with(weights)),
+        reverse=True,
+    )
+
+
 def rank(cards: list[Scorecard]) -> list[Scorecard]:
-    """Rank by (not disqualified, overall) descending. Gated projects sink last."""
-    return sorted(cards, key=lambda c: (not c.disqualified, c.overall), reverse=True)
+    """Rank under the default weights. Gated projects sink last."""
+    return rank_by(cards)
+
+
+@dataclass
+class SensitivityRow:
+    """One project's standing across every weight profile."""
+
+    project: str
+    disqualified: bool
+    # profile key -> (overall score 0–100, rank position 1-based)
+    by_profile: dict[str, tuple[float, int]]
+
+
+@dataclass
+class SensitivityReport:
+    profiles: list[WeightProfile]
+    rows: list[SensitivityRow]
+
+    @property
+    def winners(self) -> dict[str, str]:
+        """Profile key -> the project ranked #1 under it."""
+        out: dict[str, str] = {}
+        for p in self.profiles:
+            top = min(self.rows, key=lambda r: r.by_profile[p.key][1])
+            out[p.key] = top.project
+        return out
+
+    @property
+    def is_robust(self) -> bool:
+        """True if the same project wins under every profile."""
+        return len(set(self.winners.values())) == 1
+
+
+def sensitivity(
+    cards: list[Scorecard], profiles: tuple[WeightProfile, ...] = WEIGHT_PROFILES
+) -> SensitivityReport:
+    """Re-rank the same scorecards under each weight profile.
+
+    Answers the question the framework warns about: is the top choice an artefact
+    of the chosen weights, or robust to reasonable disagreement about them?
+    """
+    rows = {c.project: SensitivityRow(c.project, c.disqualified, {}) for c in cards}
+    for profile in profiles:
+        ranked = rank_by(cards, profile.weights)
+        for position, card in enumerate(ranked, start=1):
+            rows[card.project].by_profile[profile.key] = (
+                card.overall_with(profile.weights),
+                position,
+            )
+    return SensitivityReport(profiles=list(profiles), rows=list(rows.values()))

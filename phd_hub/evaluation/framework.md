@@ -107,14 +107,42 @@ the weights *before* you see the scores, not after, to avoid rationalising.
 
 ---
 
-## 6. How to use it
+## 6. Sensitivity analysis (is the ranking robust?)
+
+Because the weights are value judgements, a ranking is only trustworthy if it
+**survives reasonable disagreement about the weights**. The framework ships five
+defensible weight profiles and re-ranks the same scores under each:
+
+| Profile | Emphasis |
+|---|---|
+| `default` | Balanced — merit-led with feasibility close behind |
+| `merit_first` | Significance + Originality + Rigour (a pure-research lens) |
+| `career_first` | Candidate Fit + Impact (a career-driven lens) |
+| `feasibility_first` | Feasibility + Resourcing ("will I actually finish?") |
+| `equal` | Every dimension weighted the same |
+
+```bash
+python evaluate.py examples/rmit_vn_scores.example.json --sensitivity
+```
+
+- If the **same project wins under every profile**, the conclusion is **robust** —
+  you can defend it without having to win the argument about exact weights.
+- If the **winner flips** between profiles, the result is **fragile** — the decision
+  genuinely turns on the weights, so you must justify the weighting itself, not just
+  the scores. The tool flags this explicitly and names the winner under each profile.
+
+This is standard practice for any weighted decision model: report the headline result
+*and* how sensitive it is to the assumptions behind it.
+
+## 7. How to use it
 
 1. **Set/confirm weights** for your situation (career-driven? weight Candidate Fit and
    Impact up. Exploratory? weight Originality up). Do this *first*.
 2. **Score each project** 1–5 on the seven dimensions, with a rationale per score.
 3. **Set the two gates** (ethics, availability).
 4. **Run** `evaluate.py` to compute weighted scores, apply gates, and rank.
-5. **Read the argument, not just the number.** Use the per-dimension rationales as the
+5. **Run `--sensitivity`** to confirm the ranking holds under different weightings.
+6. **Read the argument, not just the number.** Use the per-dimension rationales as the
    body of your justification memo / email to a supervisor.
 
 A worked example over three real RMIT Vietnam PhD projects is in
@@ -122,10 +150,10 @@ A worked example over three real RMIT Vietnam PhD projects is in
 
 ---
 
-## 7. Limitations (state these when you present it)
+## 8. Limitations (state these when you present it)
 
 - **Weights are value judgements.** The framework makes them explicit and arguable; it
-  does not make them objective. Sensitivity-test by re-ranking under a different weight set.
+  does not make them objective — which is exactly why §6 re-ranks under several weightings.
 - **Scores are human judgement.** The structured data we hold on a project (funding,
   close date, supervisors) can *signal* some dimensions but cannot score research merit.
   The tool deliberately requires human scores and only *suggests* signals.
@@ -134,7 +162,7 @@ A worked example over three real RMIT Vietnam PhD projects is in
 
 ---
 
-## 8. References
+## 9. References
 
 - Hulley, S. B., Cummings, S. R., Browner, W. S., Grady, D. G., & Newman, T. B.
   *Designing Clinical Research* — the FINER criteria.

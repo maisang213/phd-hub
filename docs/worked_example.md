@@ -49,6 +49,35 @@ python evaluate.py examples/rmit_vn_scores.example.json
   score anyway, so you can see there was nothing worth reopening it for — it was the
   weakest on merit too (poor QR fit, unfunded).
 
+## Sensitivity analysis
+
+A single ranking under one weight set proves little if a small change to the weights
+would reshuffle it. Re-running under five defensible profiles:
+
+```bash
+python evaluate.py examples/rmit_vn_scores.example.json --sensitivity
+```
+
+```
+Project                  default   merit_first  career_first  feasibility_first  equal
+PEAD/Sentiment           82 (#1)    82 (#1)      85 (#1)       81 (#1)            83 (#1)
+LLM                      74 (#2)    74 (#2)      76 (#2)       72 (#2)            74 (#2)
+MAS (disqualified)       56 (#3)    57 (#3)      54 (#3)       55 (#3)            54 (#3)
+
+✓ Robust: PEAD/Sentiment ranks #1 under all 5 weight profiles.
+```
+
+**The result is robust.** PEAD/Sentiment wins under every lens — even `merit_first`
+(which down-weights Candidate Fit, its strongest dimension) and `feasibility_first`.
+The order never changes. This matters for the justification: you don't have to win an
+argument about the *exact* weights, because no reasonable weighting changes the answer.
+The widest gap to LLM appears under `career_first` (85 vs 76), the narrowest under
+`feasibility_first` (81 vs 72) — but PEAD leads throughout.
+
+Had the winner flipped between profiles, the tool would have flagged the result as
+**fragile** and named the winner under each profile — a signal that the decision turns
+on the weighting itself and needs to be argued on those grounds.
+
 ## How to use this as justification
 
 The per-dimension rationales *are* the argument. To justify the choice to a supervisor
