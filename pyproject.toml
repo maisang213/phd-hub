@@ -10,6 +10,7 @@ dependencies = ["requests>=2.31"]
 
 [project.scripts]
 fetch-projects = "fetch:main"
+evaluate-projects = "evaluate:main"
 
 [tool.setuptools.packages.find]
 include = ["phd_hub*"]

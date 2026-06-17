@@ -8,7 +8,7 @@ import sys
 from datetime import date
 from pathlib import Path
 
-from rmit_projects.fetchers import rmit_vn
+from phd_hub.fetchers import rmit_vn
 
 DATA_DIR = Path(__file__).parent / "data"
 
