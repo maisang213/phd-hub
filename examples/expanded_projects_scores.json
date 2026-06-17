@@ -1,0 +1,101 @@
+{
+  "_comment": "Expansion candidates mined from data/rmit_vn_2026-06-17.json (the fetched RMIT VN catalogue), scored through the same rubric as examples/rmit_vn_scores.example.json. The incumbent #247 PEAD/Sentiment is included as the benchmark. QR-career lens. See docs/expanded_projects.md. Run: python evaluate.py examples/expanded_projects_scores.json --sensitivity",
+  "projects": [
+    {
+      "project": "#247 PEAD/Sentiment — Investor Sentiment, Earnings Surprises & Market Anomalies (incumbent benchmark)",
+      "scores": {
+        "significance": {"score": 4, "rationale": "PEAD and sentiment-driven anomalies are open, actively-studied questions in empirical finance."},
+        "originality": {"score": 4, "rationale": "Sentiment x earnings-surprise framing on a less-studied market is a defensible gap."},
+        "rigour": {"score": 4, "rationale": "Anomaly prediction has a falsifiable metric: out-of-sample, risk-adjusted returns."},
+        "feasibility": {"score": 4, "rationale": "Prices, earnings and sentiment data are obtainable; scope fits a candidature."},
+        "resourcing": {"score": 4, "rationale": "Funded; three named supervisors across Accounting AISSC."},
+        "impact": {"score": 4, "rationale": "Publishable empirical-finance results that map directly to alpha claims."},
+        "candidate_fit": {"score": 5, "rationale": "Anomaly prediction is alpha — squarely on the QR career path and existing skills."}
+      },
+      "gates": {
+        "ethics": {"passed": true, "rationale": "Secondary market data; no human-subjects concern."},
+        "availability": {"passed": true, "rationale": "Open until 31 Dec 2027; not yet contacted."}
+      }
+    },
+    {
+      "project": "#238 Social finance as a predictor of firm outcomes & asset prices (ASEAN) — Linh Nguyen Thi My, DR203",
+      "scores": {
+        "significance": {"score": 4, "rationale": "Social-finance asset pricing (Kuchler & Stroebel) is a hot, open area; emerging-market evidence is scarce."},
+        "originality": {"score": 4, "rationale": "Social interactions -> asset prices in an ASEAN/Vietnam setting is a genuine, defensible gap."},
+        "rigour": {"score": 4, "rationale": "Asset prices in the brief + Financial Econometrics FOR code => native falsifiable OOS return metric."},
+        "feasibility": {"score": 3, "rationale": "Measuring social-interaction proxies is data-hard; ASEAN-wide scope is broad and needs narrowing."},
+        "resourcing": {"score": 3, "rationale": "Finance supervisor with econometrics mandate, but a single named lead and listing reads expired -> capacity must be confirmed."},
+        "impact": {"score": 4, "rationale": "Asset-price results publish in finance venues and map to alpha; ESG-free supervisory line keeps the framing clean."},
+        "candidate_fit": {"score": 5, "rationale": "Social/sentiment -> asset prices is the PEAD core under a cleaner, more alpha-shaped supervisor than #247."}
+      },
+      "gates": {
+        "ethics": {"passed": true, "rationale": "Secondary market/social data; no human-subjects concern."},
+        "availability": {"passed": false, "rationale": "Advertised close 31/12/23 — reads as expired. Gate fails until Linh Nguyen Thi My confirms a current intake."}
+      }
+    },
+    {
+      "project": "#167 FinTech and Sustainable Finance — Huy Pham, Hanh Le, Van Ha, DR205 (funded, open 2026-12-31)",
+      "scores": {
+        "significance": {"score": 4, "rationale": "FinTech x sustainable finance is consequential and policy-relevant."},
+        "originality": {"score": 3, "rationale": "Crowded ESG-fintech / green-asset space; incremental novelty."},
+        "rigour": {"score": 3, "rationale": "ESG-impact assessment is looser to falsify; an econometrics component exists but is not the core."},
+        "feasibility": {"score": 4, "rationale": "Funded and open; ESG/market data accessible; scope fits a candidature."},
+        "resourcing": {"score": 4, "rationale": "Funded, open to 2026-12-31, three named supervisors with a Financial Econometrics FOR share."},
+        "impact": {"score": 4, "rationale": "Publishable and policy-visible, with real industry interest."},
+        "candidate_fit": {"score": 2, "rationale": "ESG/green/blockchain framing pulls toward disclosure-impact, off the alpha path (same divergence risk as #247's ESG lead)."}
+      },
+      "gates": {
+        "ethics": {"passed": true, "rationale": "Market/ESG secondary data; standard integrity controls."},
+        "availability": {"passed": true, "rationale": "Funded and open until 31 Dec 2026."}
+      }
+    },
+    {
+      "project": "#177 Sustainable Finance and Market Stability: green investments — Fiza Qureshi, DR205",
+      "scores": {
+        "significance": {"score": 3, "rationale": "Green-asset market dynamics matter but the question is broad and developing."},
+        "originality": {"score": 3, "rationale": "A new application of established market-dynamics methods to green assets; modest novelty."},
+        "rigour": {"score": 3, "rationale": "Explicitly quantitative, but 'market stability' is loosely defined as a success metric."},
+        "feasibility": {"score": 3, "rationale": "Quantitative on issuable-securities data, but very broad (developed + emerging) and needs scoping."},
+        "resourcing": {"score": 2, "rationale": "Single supervisor; funding and close date not listed — status uncertain."},
+        "impact": {"score": 3, "rationale": "Publishable in mid-tier sustainable-finance venues; limited alpha reach."},
+        "candidate_fit": {"score": 2, "rationale": "ESG/green-investment focus; Investment & Risk-Management FOR code is the only real QR hook."}
+      },
+      "gates": {
+        "ethics": {"passed": true, "rationale": "Secondary market data; no concern."},
+        "availability": {"passed": true, "rationale": "Listed with no close date; assume open pending confirmation."}
+      }
+    },
+    {
+      "project": "#205 What drives the development of Cryptoeconomies? — Binh Nguyen Thanh, Diem Vo, DR205",
+      "scores": {
+        "significance": {"score": 3, "rationale": "Crypto/digital-asset growth matters, but framed as development economics, not pricing."},
+        "originality": {"score": 3, "rationale": "Theory-building for cryptoeconomy development; literature is early but not asset-pricing-novel."},
+        "rigour": {"score": 2, "rationale": "Theory-driven/development framing; no falsifiable return claim."},
+        "feasibility": {"score": 3, "rationale": "Doable but conceptual scope is diffuse."},
+        "resourcing": {"score": 2, "rationale": "Unfunded; two supervisors but no funding signalled."},
+        "impact": {"score": 3, "rationale": "Publishable in fintech/development outlets; limited alpha reach."},
+        "candidate_fit": {"score": 2, "rationale": "Development-economics-of-crypto, not crypto return prediction — off the alpha path."}
+      },
+      "gates": {
+        "ethics": {"passed": true, "rationale": "Secondary/public data; no concern."},
+        "availability": {"passed": true, "rationale": "Listed with no close date; assume open."}
+      }
+    },
+    {
+      "project": "#221 Blockchain, FinTech and transformation in banking — Thai Nguyen, DR205 (funded, open 2027)",
+      "scores": {
+        "significance": {"score": 3, "rationale": "Banking disruption by fintech matters but is a busy, well-trodden area."},
+        "originality": {"score": 2, "rationale": "Industry-impact and policy questions; little identifiable new method or dataset."},
+        "rigour": {"score": 2, "rationale": "Qualitative impact/policy framing; hard to pin a falsifiable success metric."},
+        "feasibility": {"score": 4, "rationale": "Funded and open to 2027; scope achievable."},
+        "resourcing": {"score": 4, "rationale": "Funded, open, named supervisor (offshore enrolment via RMIT Australia)."},
+        "impact": {"score": 3, "rationale": "Publishable in banking/policy venues; negligible alpha reach."},
+        "candidate_fit": {"score": 2, "rationale": "Qualitative banking-transformation work, off the QR/alpha path."}
+      },
+      "gates": {
+        "ethics": {"passed": true, "rationale": "Industry/secondary data; standard controls."},
+        "availability": {"passed": true, "rationale": "Funded and open until 31 Dec 2027."}
+      }
+    }
+  ]
+}
