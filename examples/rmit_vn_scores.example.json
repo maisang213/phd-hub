@@ -1,0 +1,53 @@
+{
+  "_comment": "Assessor input for evaluate.py. Scores are 1-5 with a rationale each; gates are pass/fail. Weights chosen for a quant-research career path: see docs/worked_example.md. Edit freely and re-run to sensitivity-test.",
+  "projects": [
+    {
+      "project": "PEAD/Sentiment — Investor Sentiment, Earnings Surprises & Market Anomalies",
+      "scores": {
+        "significance": {"score": 4, "rationale": "PEAD and sentiment-driven anomalies are open, actively-studied questions in empirical finance."},
+        "originality": {"score": 4, "rationale": "Sentiment x earnings-surprise framing on a less-studied market is a defensible gap."},
+        "rigour": {"score": 4, "rationale": "Anomaly prediction has a falsifiable metric: out-of-sample, risk-adjusted returns."},
+        "feasibility": {"score": 4, "rationale": "Prices, earnings and sentiment data are obtainable; scope fits a candidature."},
+        "resourcing": {"score": 4, "rationale": "Funded; three named supervisors across Accounting AISSC."},
+        "impact": {"score": 4, "rationale": "Publishable empirical-finance results that map directly to alpha claims."},
+        "candidate_fit": {"score": 5, "rationale": "Anomaly prediction is alpha — squarely on the QR career path and existing skills."}
+      },
+      "gates": {
+        "ethics": {"passed": true, "rationale": "Secondary market data; no human-subjects concern."},
+        "availability": {"passed": true, "rationale": "Open until 31 Dec 2027; not yet contacted."}
+      }
+    },
+    {
+      "project": "LLM — Large Language Models for Business Innovation & Decision-Making",
+      "scores": {
+        "significance": {"score": 4, "rationale": "LLMs for asset-price prediction and market-efficiency questions are topical and consequential."},
+        "originality": {"score": 4, "rationale": "Applying LLMs to price prediction is novel but a crowded, fast-moving space."},
+        "rigour": {"score": 3, "rationale": "Sound in principle but success metric is looser; harder to isolate a falsifiable claim."},
+        "feasibility": {"score": 3, "rationale": "Compute, data-licensing and reproducibility risk around LLM experiments."},
+        "resourcing": {"score": 4, "rationale": "Funded; shares the key anchor supervisor (Ha Xuan Son)."},
+        "impact": {"score": 4, "rationale": "Publishable and visible, with real industry interest."},
+        "candidate_fit": {"score": 4, "rationale": "Strong fit, slightly less directly alpha-shaped than PEAD."}
+      },
+      "gates": {
+        "ethics": {"passed": true, "rationale": "Market/text data; standard integrity controls."},
+        "availability": {"passed": true, "rationale": "Open until 30 Jun 2027; not yet contacted."}
+      }
+    },
+    {
+      "project": "MAS — Multi-AI Agents System for Adaptive Portfolio Management",
+      "scores": {
+        "significance": {"score": 3, "rationale": "RL/multi-agent portfolio management matters but is a busy area."},
+        "originality": {"score": 3, "rationale": "Reads as 'a system' rather than a sharp alpha-discovery question."},
+        "rigour": {"score": 3, "rationale": "RL evaluation is notoriously hard to make falsifiable out-of-sample."},
+        "feasibility": {"score": 3, "rationale": "Achievable but heavy engineering relative to research yield."},
+        "resourcing": {"score": 2, "rationale": "Unfunded; lead supervisor at capacity."},
+        "impact": {"score": 3, "rationale": "Publishable but the framing dilutes a clean alpha claim."},
+        "candidate_fit": {"score": 2, "rationale": "Poor QR fit; dispreferred from the start."}
+      },
+      "gates": {
+        "ethics": {"passed": true, "rationale": "Simulated/market data; no concern."},
+        "availability": {"passed": false, "rationale": "CLOSED — candidate already recruited; lead supervisor at capacity (confirmed 2026-06-16)."}
+      }
+    }
+  ]
+}
