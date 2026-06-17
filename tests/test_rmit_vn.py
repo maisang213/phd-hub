@@ -3,7 +3,7 @@
 import json
 import pytest
 from unittest.mock import patch, MagicMock
-from rmit_projects.fetchers.rmit_vn import (
+from phd_hub.fetchers.rmit_vn import (
     fetch,
     _parse_sdg,
     _parse_funded,
@@ -40,7 +40,6 @@ class TestParsers:
         assert _parse_sdg(" 2, 11 ") == ["2", "11"]
 
     def test_parse_funded(self):
-        from rmit_projects.fetchers.rmit_vn import _parse_funded
         assert _parse_funded("Yes") is True
         assert _parse_funded("No") is False
         assert _parse_funded("") is None
