@@ -23,13 +23,23 @@ Puts both projects on the table from sentence one, legitimises Ha Son's project 
 
 Open with: *"My background's a quant trading desk, so I instinctively frame a sentiment question as 'does this predict returns out-of-sample, after costs.' I want to check that framing fits how you'd want the thesis built."*
 
+**The decisive question — ask it early, neutral either/or (NOT "is this just explanatory accounting?"):**
+> "Would the thesis be judged on whether the sentiment signal **predicts returns out-of-sample, after costs**, or on **explaining** investors' over/under-reaction to earnings? I want to make sure I build toward the right one."
+
+Offers two legitimate options instead of asking him to admit a flaw → candid answer, and "predicts returns OOS after costs" is specific enough that a hollow "sure, it can be predictive" can't satisfy it. A clean "predictive" answer is ~80% of the decision; still chase Q4 (method ownership) to make it binding.
+
 | # | Ask | ✅ alive | ❌ explanatory/accounting |
 |---|-----|--------|------------|
 | Q1 | Judged on **OOS return predictability**, or on explaining a relationship? | "predict / survive costs / tradable" | "establish / explain the channel" |
 | Q2 | **Predictive backtest** w/ train-test split, or panel/event-study? | "walk-forward / hold-out" | "panel / fixed effects" — **qual = hard red flag** |
-| Q4 | Will **Anh Nguyen own the empirical-finance method**? | "yes, Anh handles markets" | "I'd lead the framing" |
+| Q4 | **[diagnostic — do NOT ask this verbatim]** Does Anh Nguyen own the empirical-finance method? | "you'd work with Anh on the empirical side" | "I'd guide all the empirical framing myself" |
 
 *(Q3 — sentiment source — is already answered GREEN by the brief: broad social media + news, NOT ESG disclosure.)*
+
+**Q4 — ask as division of EXPERTISE, never as transfer of CONTROL.** "Will Anh own the method rather than you?" insults the lead in his own meeting (esp. in an academic/VN hierarchy). Instead:
+> "Since the project spans accounting, finance, and AI across the three of you — how would you see the supervision dividing up? Who would I mainly work with on the empirical / asset-pricing side, versus the sentiment-extraction and earnings-surprise pieces?"
+
+Standard question, flatters all three (each gets a domain), and the answer reveals method ownership without demanding it. **Let Buertey describe the split first.** If he hands the empirical lead to Anh on his own → confirmed, cost nothing. If he claims all empirical framing himself → note it silently, don't push back in the room. Principle (same as Q1): ask the neutral question whose ANSWER is the diagnostic; never ask the diagnostic.
 
 ## 3. Branch on Buertey's answer
 
