@@ -151,33 +151,38 @@ pdf.line(X, y, X + W, y)
 
 # ---------- Education ----------
 section(pdf, X, W, "Education")
-entry_head(pdf, X, W, "MSc, Applied Mathematics (Quantitative & Computational Finance)", "2016 - 2018")
-subline(pdf, X, W, "University of Science, Vietnam National University HCMC  -  Distinction")
+entry_head(pdf, X, W, "MSc, Applied Mathematics (Quantitative & Computational Finance)", "2016 - 2019")
+subline(pdf, X, W, "University of Science, VNU-HCM  -  Capstone graded 10/10; Stochastic Calculus 9.5/10, "
+                   "Probability & Statistics 9.0/10")
 pdf.ln(1.0)
-entry_head(pdf, X, W, "BA, Economics and Finance", "2012 - 2015")
-subline(pdf, X, W, "RMIT University  -  Distinction")
+entry_head(pdf, X, W, "Bachelor of Business (Economics and Finance)", "2012 - 2015")
+subline(pdf, X, W, "RMIT University  -  Awarded with Distinction")
 pdf.ln(1.0)
 entry_head(pdf, X, W, "Mathematics (specialised), High School for the Gifted, VNU-HCMC", "2009 - 2012")
 
 # ---------- Research Experience ----------
 section(pdf, X, W, "Research Experience")
-entry_head(pdf, X, W, "Capstone Project - HCMC University of Science", "Jan - Mar 2018")
+entry_head(pdf, X, W, "Capstone Project (graded 10/10) - University of Science, VNU-HCM", "Jan - Mar 2018")
 flow(pdf, X, W, [
-    ("Applied the three-layered boosting and expert-weighting online-learning framework of ", False, None),
-    ("Creamer and Freund (2010)", True, "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=937847"),
-    (" to the Vietnamese stock market, using an event-study / abnormal-return methodology to find optimal "
-     "combinations of technical indicators and parameters for positive abnormal returns. The same "
-     "signal-combination approach is what the proposed PhD would extend from technical indicators to text- "
-     "and LLM-derived sentiment signals for earnings-surprise prediction. Supervised by ", False, None),
+    ("Built a three-layer system for VN30 equities - gradient-boosted decision-tree 'experts' over ~40 "
+     "technical signals, combined by an online expert-weighting layer (", False, None),
+    ("Creamer & Freund 2010", True, "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=937847"),
+    (") with a risk overlay - to predict the sign of next-day abnormal returns vs the index. Out-of-sample "
+     "(2015-17) it beat the VN30 on risk-adjusted measures (Information / Sharpe ratios ~2-4), with a "
+     "transaction-cost sensitivity analysis confirming outperformance persisted to ~2 bps per trade. The "
+     "same signal-combination approach is what the proposed PhD would extend to text- and LLM-derived "
+     "sentiment signals for earnings-surprise prediction. Supervised by ", False, None),
     ("Dr Minh Dang", True, "https://www.linkedin.com/in/ngocminhdang/"),
-    (".", False, None),
+    (" (State Street, Hong Kong).", False, None),
 ], gap_after=1.6)
-entry_head(pdf, X, W, "Master's Thesis - HCMC University of Science", "2018")
+entry_head(pdf, X, W, "Master's Thesis - University of Science, VNU-HCM", "2019")
 flow(pdf, X, W, [
-    ("Extended the smile-adjusted delta-hedging approach of ", False, None),
+    ("\"Smile-adjusted delta hedging for options improved with boosting.\" Added a gradient-boosted-"
+     "regression-tree step to the minimum-variance delta of ", False, None),
     ("Hull and White (2017)", True, "https://www.sciencedirect.com/science/article/pii/S0378426617301085"),
-    (" with supervised ML (gradient-boosted trees) to reduce hedging variance for options on the S&P 500 "
-     "index and its constituents, 2004-2015. Supervised by ", False, None),
+    ("; on ~1.3M S&P 500 index option records (OptionMetrics, 2015-17) it delivered a statistically "
+     "significant out-of-sample reduction in hedging error (Newey-West t-tests) for put options. "
+     "Supervised by ", False, None),
     ("Dr Minh Dang", True, "https://www.linkedin.com/in/ngocminhdang/"),
     (".", False, None),
 ], gap_after=1.6)
@@ -200,6 +205,16 @@ flow(pdf, X, W, [
     ("doi:10.28945/3756", False, "https://doi.org/10.28945/3756"),
 ], gap_after=1.2)
 
+# ---------- Teaching ----------
+section(pdf, X, W, "Teaching")
+entry_head(pdf, X, W, "Teaching Assistant - \"Derivatives Pricing in Practice\" (graduate course)", "2017 - 2018")
+flow(pdf, X, W, [
+    ("University of Science, VNU-HCM. Supported delivery of the graduate derivatives-pricing course under ",
+     False, None),
+    ("Dr Minh Dang", True, "https://www.linkedin.com/in/ngocminhdang/"),
+    (".", False, None),
+], gap_after=1.2)
+
 # ---------- Professional Experience ----------
 section(pdf, X, W, "Professional Experience")
 entry_head(pdf, X, W, "Ho Chi Minh City Securities Corporation (HSC)", "2017 - Present")
@@ -207,13 +222,15 @@ subline(pdf, X, W, "One of Vietnam's leading brokerage and investment-banking fi
 pdf.ln(0.6)
 pdf.set_x(X)
 pdf.set_font("Helvetica", "B", 8.8); pdf.set_text_color(*DARK)
-pdf.cell(W * 0.72, 4.2, clean("Manager / Senior Manager - Quant & Warrant Trading"))
+pdf.cell(W * 0.72, 4.2, clean("Manager / Senior Manager - Structured Products & Quantitative Trading"))
 pdf.set_font("Helvetica", "I", 8.2); pdf.set_text_color(*GREY)
 pdf.cell(W * 0.28, 4.2, "Jan 2024 - Present", align="R"); pdf.ln(4.4)
 for b in [
-    "Established the equity quant trading desk from the ground up;",
-    "Build models to backtest and construct quantitative portfolios maximising absolute and "
-    "risk-adjusted equity returns; supervise the covered-warrant desk.",
+    "Lead quantitative research - developing and backtesting models to construct equity portfolios "
+    "optimised for absolute and risk-adjusted returns;",
+    "Oversee the structured-products (covered warrants) desk - pricing, market-making, hedging and reporting;",
+    "Mandated to build out and lead structured-products trading (equity options and other new structured "
+    "products) as they launch in the Vietnamese market.",
 ]:
     flow(pdf, X, W, [("-  " + b, False, None)], size=8.6, lh=3.9, gap_after=0.3, indent=3)
 pdf.ln(0.6)
@@ -228,12 +245,13 @@ flow(pdf, X, W, [("-  Product development, pricing, market-making and reporting 
 
 entry_head(pdf, X, W, "Investment Analyst - Saigon Asset Management (SAM)", "Aug 2014 - Aug 2015")
 flow(pdf, X, W, [("Research and valuation of Vietnamese listed companies (DCF and comparables) for funds "
-                  "with once over USD$200m AUM.", False, None)], size=8.6, lh=3.9, gap_after=1.2)
+                  "with peak AUM over USD$200m.", False, None)], size=8.6, lh=3.9, gap_after=1.2)
 
 # ---------- Technical Skills ----------
 section(pdf, X, W, "Technical Skills")
 flow(pdf, X, W, [("Econometrics & event studies  -  Supervised ML (gradient boosting, online learning)  -  "
-                  "Python (pandas, scikit-learn)  -  C++  -  LaTeX", False, None)], gap_after=1.2)
+                  "Out-of-sample & after-cost backtesting  -  Python (pandas, scikit-learn)  -  C++  -  LaTeX",
+                  False, None)], gap_after=1.2)
 
 # ---------- Credentials ----------
 section(pdf, X, W, "Credentials")
