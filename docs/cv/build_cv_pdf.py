@@ -190,8 +190,8 @@ entry_head(pdf, X, W, "Research Assistant - RMIT University Vietnam", "Aug 2016 
 flow(pdf, X, W, [
     ("Co-authored learning-and-teaching research with ", False, None),
     ("A/Prof. Mathews Nkhoma", True, "https://www.linkedin.com/in/mathews-nkhoma-281a5891/"),
-    (": literature review, database searches, and qualitative & quantitative data analysis, resulting in "
-     "the peer-reviewed conference paper listed below.", False, None),
+    (" (now Associate Deputy Vice-Chancellor, RMIT University): literature review and qualitative & "
+     "quantitative data analysis, resulting in the peer-reviewed conference paper below.", False, None),
 ], gap_after=1.4)
 
 # ---------- Publications ----------
