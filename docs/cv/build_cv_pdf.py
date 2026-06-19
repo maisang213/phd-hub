@@ -140,7 +140,7 @@ pdf.cell(0, 4.5, clean("(+84) 901.350.009  -  Ho Chi Minh City, Vietnam"))
 pdf.ln(5)
 pdf.set_x(X)
 pdf.set_font("Helvetica", "I", 8.8)
-pdf.set_text_color(*ACCENT)
+pdf.set_text_color(*DARK)
 pdf.multi_cell(0, 4, clean("Research interests: ML-driven signal combination for abnormal returns in "
                            "emerging equity markets; investor sentiment and earnings-surprise prediction."))
 pdf.ln(1.2)
@@ -158,7 +158,7 @@ pdf.ln(1.0)
 entry_head(pdf, X, W, "Bachelor of Business (Economics and Finance)", "2012 - 2015")
 subline(pdf, X, W, "RMIT University  -  Awarded with Distinction")
 pdf.ln(1.0)
-entry_head(pdf, X, W, "Mathematics (specialised), High School for the Gifted, VNU-HCMC", "2009 - 2012")
+entry_head(pdf, X, W, "Mathematics (specialised), High School for the Gifted, VNU-HCM", "2009 - 2012")
 
 # ---------- Research Experience ----------
 section(pdf, X, W, "Research Experience")
@@ -207,7 +207,7 @@ flow(pdf, X, W, [
 
 # ---------- Teaching ----------
 section(pdf, X, W, "Teaching")
-entry_head(pdf, X, W, "Teaching Assistant - \"Derivatives Pricing in Practice\" (graduate course)", "2017 - 2018")
+entry_head(pdf, X, W, "Teaching Assistant - \"Derivatives Pricing in Practice\" (graduate course)", "2017")
 flow(pdf, X, W, [
     ("University of Science, VNU-HCM. Supported delivery of the graduate derivatives-pricing course under ",
      False, None),
@@ -249,8 +249,9 @@ flow(pdf, X, W, [("Research and valuation of Vietnamese listed companies (DCF an
 
 # ---------- Technical Skills ----------
 section(pdf, X, W, "Technical Skills")
-flow(pdf, X, W, [("Econometrics & event studies  -  Supervised ML (gradient boosting, online learning)  -  "
-                  "Out-of-sample & after-cost backtesting  -  Python (pandas, scikit-learn)  -  C++  -  LaTeX",
+flow(pdf, X, W, [("Derivatives & options (pricing, Greeks, hedging)  |  Econometrics, abnormal-return "
+                  "analysis & time-series  |  Supervised ML (gradient boosting, online learning)  |  "
+                  "Portfolio construction, out-of-sample & after-cost backtesting  |  Python (pandas, scikit-learn)",
                   False, None)], gap_after=1.2)
 
 # ---------- Credentials ----------
