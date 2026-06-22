@@ -30,3 +30,15 @@ Asked whether the project was still accepting applicants given the listed close 
 **Outcome:** AWAITING Buertey's chosen time for the Tuesday 23 June online meeting. Then: run the ESG probe early in the conversation.
 
 ---
+
+## 2026-06-22 — Meeting-prep research + authorship correction (PEAD/Sentiment, DR200)
+
+**Prep built for Tue 23 June meeting:** added `docs/pead_meeting_cheatsheet.md` (live glance-card) and `docs/pead_meeting_primer.md` (substance: the team's own paper, Lopez-Lira & Tang as the predictive template, PEAD canon + tradability evidence, Anh Nguyen's papers, full LLM #192 brief).
+
+**CORRECTION (verified via Emerald + SSRN):** the team paper *"Decoding market sentiment: the power of ChatGPT in explaining Bitcoin returns from X data"* (China Finance Review Int'l, 2025, DOI 10.1108/CFRI-05-2024-0278) is authored by **Binh Nguyen Thanh, Anh Tuan Nguyen, Thanh Tuan Chu, Son Ha — NOT Buertey.** Earlier notes calling it "Buertey/Anh/Son's group" were wrong. The paper ties **Anh + Son + Binh (the LLM #192 leaders)** to the topic, not Buertey → cite it to Anh and Son in the room, and it reinforces the LLM-#192 pivot path.
+
+**Also confirmed:** the paper is **in-sample explanatory** (lagged-sentiment regressions, Newey-West, no OOS split, no after-cost backtest, only an illustrative Sharpe) — pre-confirms the "explain not predict" verdict before the probe is even asked, and leaves the OOS/after-cost evaluation as the open gap a predictive thesis would fill.
+
+**Outcome:** Meeting strategy unchanged; sourcing of the cite-the-team's-paper card corrected (Anh/Son, not Buertey). Still AWAITING Buertey's chosen time within 1:00–4:00 pm.
+
+---

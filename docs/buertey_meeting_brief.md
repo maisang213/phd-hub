@@ -68,4 +68,4 @@ Standard question, flatters all three (each gets a domain), and the answer revea
 - **Neither lands** → no RMIT VN project passes the test → seriously weigh other venues for a QR-track PhD.
 
 ## The model to cite
-The team's own *"Decoding market sentiment: ChatGPT explaining Bitcoin returns"* (China Finance Review Int'l, 2025) — proof the predictive/OOS evaluation discipline and the Buertey/Anh/Son division of labour already work in practice.
+*"Decoding market sentiment: the power of ChatGPT in explaining Bitcoin returns from X data"* (China Finance Review Int'l, 2025) — **authored by Anh Nguyen, Son Ha + Binh Nguyen Thanh, NOT Buertey.** Cite it **to Anh and Son** as the team's in-print GenAI-sentiment→returns program. Note it is in-sample *explanatory* (no OOS/after-cost test) — so it proves the topic is live AND shows the predictive/after-cost gap your thesis would fill; it does not prove a predictive discipline. See `pead_meeting_primer.md`.
