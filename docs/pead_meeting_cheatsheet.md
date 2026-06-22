@@ -64,8 +64,9 @@ Is the thesis judged on **predicting returns OOS, after costs** — or on **expl
 - **PEAD explanatory AND Son open to LLM-under-DR203 + Anh co-sup** → that's primary (only config passing all prongs).
 - **Neither lands** → no RMIT VN project passes → seriously weigh other venues for a QR PhD.
 
-## Card to play if useful
-Their own paper: **"Decoding market sentiment: ChatGPT explaining Bitcoin returns"** (China Finance Review Int'l, 2025) — proof the predictive/OOS discipline AND the Buertey/Anh/Son division of labour already work in print.
+## Card to play if useful — address it to ANH + SON, not Buertey
+**"Decoding market sentiment: …ChatGPT in explaining Bitcoin returns"** (China Finance Review Int'l, 2025) — authored by **Anh Nguyen, Son Ha + Binh Nguyen Thanh (NOT Buertey).** It's the team's in-print GenAI-sentiment→returns program → topic is live.
+- It's **in-sample explanatory** (no OOS / after-cost test) — so use it as: *"you've shown sentiment explains returns; I'd add the out-of-sample, after-cost predictive test on VN equities."* The gap IS your thesis. Don't call it proof of predictive discipline — it isn't.
 
 ## Logistics
 - They pick the time inside 1–4pm. CV already sent (`docs/cv/quy-sang-mai-cv.pdf`).

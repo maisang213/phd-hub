@@ -28,6 +28,8 @@ Open with: *"My background's a quant trading desk, so I instinctively frame a se
 
 Offers two legitimate options instead of asking him to admit a flaw → candid answer, and "predicts returns OOS after costs" is specific enough that a hollow "sure, it can be predictive" can't satisfy it. A clean "predictive" answer is ~80% of the decision; still chase Q4 (method ownership) to make it binding.
 
+> **You already know the likely answer — probe to CONFIRM, not discover.** The team's own paper (Anh + Son + Binh, see "model to cite") is **in-sample explanatory: lagged-sentiment regressions, no train/test split, no after-cost backtest** — only an illustrative Sharpe. So Q1/Q2 are pre-loaded toward "explanatory." Don't act surprised. The move the instant you hear it: deploy the **"yes-and" bridge** — *"You've shown sentiment explains returns; I'd add the out-of-sample, after-cost predictive test on VN equities — same data, same LLM sentiment layer, one extra evaluation lens."* Their paper's own Sharpe element is your hook to make it. Substance to back this (Lopez-Lira predictive template, PEAD tradability answer) is in `pead_meeting_primer.md`.
+
 | # | Ask | ✅ alive | ❌ explanatory/accounting |
 |---|-----|--------|------------|
 | Q1 | Judged on **OOS return predictability**, or on explaining a relationship? | "predict / survive costs / tradable" | "establish / explain the channel" |
