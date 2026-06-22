@@ -42,3 +42,19 @@ Asked whether the project was still accepting applicants given the listed close 
 **Outcome:** Meeting strategy unchanged; sourcing of the cite-the-team's-paper card corrected (Anh/Son, not Buertey). Still AWAITING Buertey's chosen time within 1:00–4:00 pm.
 
 ---
+
+## 2026-06-22 — Meeting prep consolidated + LLM #192 arm built out (DR200/DR203)
+
+**Reframe:** The Tue 23 June meeting is **dual-purpose**. It opens as PEAD/DR200, but since the team's own paper is in-sample/explanatory, the ~80%-likely probe answer is "explanatory" — at which point the meeting **becomes the LLM #192 meeting** (Son + Anh are already in the room). So the LLM arm was prepped to the same depth as PEAD, with its own **inverse probe**: #192's brief is already predictive, so the diagnostic is whether they'd actually evaluate it OOS/after-cost or let it drift in-sample like the Bitcoin paper, plus the two structural asks (DR203 enrolment + Anh as finance co-sup).
+
+**Docs restructured:** the three separate files (`buertey_meeting_brief`, `pead_meeting_primer`, `pead_meeting_cheatsheet` — .md + .pdf) were **deleted and merged into one** — `docs/phd_meeting_brief.md` (+ synced `.pdf` via pandoc/weasyprint). Single source covering both arms: dual-purpose framing, decision tree, both probes + read-tables, shared substance bank, VN-equities scope answer, diplomacy rails.
+
+**Verified this round (web research):**
+- **DR203 = PhD (Economics, Finance & Marketing)** — School of Economics, Finance & Marketing, College of Business & Law. CONFIRMED as the finance enrolment home. **DR200 = PhD (Accountancy)** (Buertey's program); DR201 = Business Information Systems; DR205 = generic PhD (Business).
+- **Bitcoin paper authors confirmed:** Binh Thanh Nguyen, Tuan Thanh Chu, Son Xuan Ha, Anh Tuan Nguyen — all RMIT VN; in-sample/contemporaneous explanatory, BERT/VADER benchmarks, no OOS, no backtest. Buertey not an author.
+- **"#192" is an internal RMIT VN tracking number** — NOT in RMIT's public HDR project database. Official title, full supervisory team, and FoR weightings are not publicly verifiable → added as a meeting ask (confirm title/team/program code directly).
+- **VN-equities scope facts** (for "what would you build?"): no real stock short-selling yet → long-only or VN30 futures; HOSE ±7% price limits censor returns; foreign-room two-price problem on blue chips; FiinPro point-in-time data; FTSE Frontier→Secondary-Emerging upgrade effective 21 Sep 2026 = passive-flow confound.
+
+**Outcome:** Prep is symmetric across both arms; one consolidated doc. Still AWAITING Buertey's chosen time within 1:00–4:00 pm.
+
+---
